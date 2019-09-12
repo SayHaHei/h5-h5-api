@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            background-color: #f7f7f7;
+        }
+        p {
+            width: 200px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            margin:100px auto;
+            color:#fff;
+            font-size:24px;
+            background-color: #000;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="tips"></p>
+    <script src="jquery.min.js"></script>
+    <script>
+        // window.navigator.onLine用于检测是否联网
+        // alert(window.navigator.onLine);
+        //1.当网络连接的时候 弹出
+        //网络状态发生变化，才会触发事件
+        // window.addEventListener("online", function () {  
+        //     $('.tips').text('网络已经连接').fadeIn(500).delay(1000).fadeOut();
+        // });
+        // //当网络断开时 显示断开
+        // window.addEventListener("offline", function () {  
+        //     $('.tips').text('网络已经断开').fadeIn(500).delay(1000).fadeOut();
+        // });
+        
+    </script>
+</body>
+
+</html>

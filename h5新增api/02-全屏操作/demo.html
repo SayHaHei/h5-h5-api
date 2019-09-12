@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div:-webkit-full-screen{
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <img src="pic1.png" height="300" alt="">
+            <button id="full">全屏显示</button>
+            <button id="cancelFull">取消全屏</button>
+            <button id="isFull">是否全屏</button>
+        </img>
+        <script>
+            //全屏显示可以是任意元素
+            //h5 api存在兼容性问题  ie9+才支持
+            //即使高版本浏览器也有兼容性问题,不同浏览器需要添加不同的前缀  webkit moz o ms
+
+            var div = document.querySelector("div");
+            document.querySelector("#full").onclick = function () {
+                // div.webkitRequestFullscreen();//开启全屏
+                //能力检测
+                if (div.requestFullscreen) {
+                    div.requestFullscreen();
+                } else if (div.webkitMatchesSelector) {
+                    div.webkitRequestFullscreen();
+                } else if (div.mozRequestFullScreen) {
+                    div.mozRequestFullScreen();
+                } else if (div.msRequestFullscreen) { //微软 有个坑  screen小写
+                    div.msRequestFullscreen();
+                } else if (div.oRequestFullScreen) {
+                    div.oRequestFullScreen();
+                }
+            }
+            //取消全屏 跟元素没有关系 跟document有关系
+            document.querySelector("#cancelFull").onclick = function () {
+                // div.webkitCancelFullscreen();//关闭全屏 错误用法，应该使用document
+                document.webkitCancelFullscreen(); //关闭全屏
+                //能力检测
+                // if (div.cancelFullScreen) {
+                //     div.cancelFullScreen();
+                // } else if (div.webkitcancelFullScreen) {
+                //     div.webkitcancelFullScreen();
+                // } else if (div.mozRequestFullScreen) {
+                //     div.mozRequestFullScreen();
+                // } else if (div.msRequestFullscreen) {//微软 有个坑  screen小写
+                //     div.msRequestFullscreen();
+                // } else if (div.oRequestFullScreen) {
+                //     div.oRequestFullScreen();
+                // }
+            }
+            //3 是否全屏显示
+            document.querySelector("#isFull").onclick = function () {
+                alert(document.webkitIsFullScreen);
+            }
+        </script>
+</body>
+
+</html>

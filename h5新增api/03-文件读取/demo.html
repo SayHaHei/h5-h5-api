@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="" id="" multiple>
+    <div id="dv">
+
+    </div>
+    <img src="" alt="" id="image">
+    <script>
+        //1.上传文件   ---借助于文件域  input file
+        var file = document.querySelector("input");
+        var dv = document.getElementById("dv");
+        var img = document.getElementById("image")
+        file.onchange = function () {  //onchange 当发生改变的时候
+            // console.log(this);
+            for(var k in file)
+            {
+                // console.log(k + "_____" + file[k]);
+                // console.log(file.files);//上传文件的集合  可以是一张图片，也可以是很多
+                //2.选择我们要的文件， 进行读取  fileReader
+                var reader = new FileReader();
+                // reader.readAsText(文件对象)
+                reader.readAsText(this.files[0]);
+                // reader.readAsDataURL(this.files[0]);
+                //当文件的内容读取完毕之后，会把内容自动存放到result属性中
+                //3.把读取的内容显示到 页面中...
+                //onload reader已经读取完毕，并且已经存放到result中
+                reader.onload = function () {  
+                    // console.log(this.result);
+                    // dv.innerHTML = this.result;
+                    //把生成的内容复制给图片的src
+                    // console.log(this.result);
+                    
+                    img.src = this.result;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
